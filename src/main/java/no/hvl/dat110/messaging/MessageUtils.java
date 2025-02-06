@@ -2,8 +2,6 @@ package no.hvl.dat110.messaging;
 
 import java.util.Arrays;
 
-import no.hvl.dat110.TODO;
-
 public class MessageUtils {
 
 	public static final int SEGMENTSIZE = 128;
@@ -46,8 +44,9 @@ public class MessageUtils {
 		// TODO - START
 		// decapsulate segment and put received payload data into a message
 
-		if (true)
-			throw new UnsupportedOperationException(TODO.method());
+		byte[] data = Arrays.copyOfRange(segment, 1, segment.length);
+
+		message = new Message(data);
 
 		// TODO - END
 
