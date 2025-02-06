@@ -27,19 +27,15 @@ public class MessagingServer {
 
 		MessageConnection connection = null;
 
-		// TODO - START
 		// accept TCP connection on welcome socket and create messaging connection to be
 		// returned
 
 		try {
 			Socket clientSocket = welcomeSocket.accept();
 			connection = new MessageConnection(clientSocket);
-
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
-		// TODO - END
 
 		return connection;
 

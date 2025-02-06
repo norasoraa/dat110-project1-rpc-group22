@@ -8,15 +8,13 @@ public class Message {
 	// construction a Message with the data provided
 	public Message(byte[] data) {
 
-		// TODO - START
 		if (data == null || data.length > 127) {
 			throw new IllegalArgumentException(
 					"The message cannot be null or contain more than 127 bytes.");
 		}
 
 		this.data = data;
-
-		// TODO - END
+		
 	}
 
 	public byte[] getData() {

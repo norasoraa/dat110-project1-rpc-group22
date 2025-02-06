@@ -32,7 +32,6 @@ public class MessageConnection {
 
 		byte[] data;
 
-		// TODO - START
 		// encapsulate the data contained in the Message and write to the output stream
 		data = MessageUtils.encapsulate(message);
 
@@ -42,8 +41,6 @@ public class MessageConnection {
 			e.printStackTrace();
 		}
 
-		// TODO - END
-
 	}
 
 	public Message receive() {
@@ -51,18 +48,14 @@ public class MessageConnection {
 		Message message = null;
 		byte[] data = null;
 
-		// TODO - START
 		// read a segment from the input stream and decapsulate data into a Message
 
 		try {
 			data = inStream.readAllBytes();
+			message = MessageUtils.decapsulate(data);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
-		message = MessageUtils.decapsulate(data);
-
-		// TODO - END
 
 		return message;
 
