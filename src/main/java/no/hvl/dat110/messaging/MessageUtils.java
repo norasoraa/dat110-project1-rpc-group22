@@ -9,10 +9,9 @@ public class MessageUtils {
 	public static int MESSAGINGPORT = 8080;
 	public static String MESSAGINGHOST = "localhost";
 
-	@SuppressWarnings("null")
 	public static byte[] encapsulate(Message message) {
 
-		byte[] segment = null;
+		byte[] segment = new byte[SEGMENTSIZE];
 		byte[] data;
 
 		// encapulate/encode the payload data of the message and form a segment
