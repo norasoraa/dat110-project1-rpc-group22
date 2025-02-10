@@ -40,7 +40,12 @@ public class MessageUtils {
 
 		// decapsulate segment and put received payload data into a message
 
-		byte[] data = Arrays.copyOfRange(segment, 1, segment.length);
+		int length = segment[0];
+		byte[] data = new byte[length];
+
+		for (int i = 0; i < length; i++) {
+			data[i] = segment[i + 1];
+		}
 
 		message = new Message(data);
 
