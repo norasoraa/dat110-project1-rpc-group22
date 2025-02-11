@@ -1,7 +1,5 @@
 package no.hvl.dat110.messaging;
 
-import java.util.Arrays;
-
 public class MessageUtils {
 
 	public static final int SEGMENTSIZE = 128;
@@ -11,7 +9,7 @@ public class MessageUtils {
 
 	public static byte[] encapsulate(Message message) {
 
-		byte[] segment = new byte[SEGMENTSIZE];
+		byte[] segment = null;
 		byte[] data;
 
 		// encapulate/encode the payload data of the message and form a segment
@@ -24,11 +22,10 @@ public class MessageUtils {
 					"The message cannot be null or contain more than 127 bytes.");
 		}
 
+		segment = new byte[SEGMENTSIZE];
 		segment[0] = (byte) data.length;
 
-		for (int i = 0; i < data.length; i++) {
-			segment[i + 1] = data[i];
-		}
+		System.arraycopy(data, 0, segment, 1, data.length);
 
 		return segment;
 
@@ -40,12 +37,15 @@ public class MessageUtils {
 
 		// decapsulate segment and put received payload data into a message
 
+		if (segment.length != SEGMENTSIZE) {
+			throw new IllegalArgumentException(
+					"Unvalid segmentsize. Must be fixed-sized segments of 128 bytes.");
+		}
+
 		int length = segment[0];
 		byte[] data = new byte[length];
 
-		for (int i = 0; i < length; i++) {
-			data[i] = segment[i + 1];
-		}
+		System.arraycopy(segment, 1, data, 0, length);
 
 		message = new Message(data);
 
