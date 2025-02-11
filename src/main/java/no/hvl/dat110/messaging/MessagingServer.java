@@ -34,6 +34,7 @@ public class MessagingServer {
 			Socket clientSocket = welcomeSocket.accept();
 			connection = new MessageConnection(clientSocket);
 		} catch (IOException e) {
+			System.out.println("Messaging server: " + e.getMessage());
 			e.printStackTrace();
 		}
 

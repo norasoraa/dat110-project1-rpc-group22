@@ -36,8 +36,9 @@ public class MessageConnection {
 		data = MessageUtils.encapsulate(message);
 
 		try {
-			outStream.writeBytes(data.toString());
+			outStream.write(data);
 		} catch (IOException e) {
+			System.out.println("Error while sending message: " + e.getMessage());
 			e.printStackTrace();
 		}
 
@@ -50,10 +51,13 @@ public class MessageConnection {
 
 		// read a segment from the input stream and decapsulate data into a Message
 
+		data = new byte[MessageUtils.SEGMENTSIZE];
+
 		try {
-			data = inStream.readAllBytes();
+			inStream.readFully(data);
 			message = MessageUtils.decapsulate(data);
 		} catch (IOException e) {
+			System.out.println("Error while receiving message: " + e.getMessage());
 			e.printStackTrace();
 		}
 
