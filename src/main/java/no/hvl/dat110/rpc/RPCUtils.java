@@ -71,7 +71,7 @@ public class RPCUtils {
 	public static void unmarshallVoid(byte[] data) {
 
 		if (data.length != 0) {
-			throw new IllegalArgumentException("Data for unmarshallVoid is not empty");
+			throw new IllegalArgumentException("Data to unmarshall is not empty");
 	}
 
 	}
