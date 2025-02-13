@@ -2,7 +2,6 @@ package no.hvl.dat110.rpc;
 
 import java.nio.ByteBuffer;
 import java.util.Arrays;
-import no.hvl.dat110.TODO;
 
 public class RPCUtils {
 
@@ -63,12 +62,7 @@ public class RPCUtils {
 
 		byte[] encoded = null;
 
-		// TODO - START
-
-		if (true)
-			throw new UnsupportedOperationException(TODO.method());
-
-		// TODO - END
+		encoded = new byte[0];
 
 		return encoded;
 
@@ -76,10 +70,9 @@ public class RPCUtils {
 
 	public static void unmarshallVoid(byte[] data) {
 
-		// TODO
-
-		if (true)
-			throw new UnsupportedOperationException(TODO.method());
+		if (data.length != 0) {
+			throw new IllegalArgumentException("Data for unmarshallVoid is not empty");
+	}
 
 	}
 
