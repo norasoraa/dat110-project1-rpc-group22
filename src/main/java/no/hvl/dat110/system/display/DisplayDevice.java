@@ -20,9 +20,10 @@ public class DisplayDevice {
 		RPCServer rpcServer = new RPCServer(Common.DISPLAYPORT);
 
 		new DisplayImpl((byte) 1, rpcServer);
-		new DisplayImpl(RPCCommon.RPIDSTOP, rpcServer);
+		//new DisplayImpl(RPCCommon.RPIDSTOP, rpcServer);
 
 		rpcServer.run();
+		rpcServer.stop();
 		
 		// TODO - END
 		
